@@ -635,7 +635,7 @@ class ChepyCore(object):
                 "/#recipe=&input={}".format(data),
             )
         webbrowser.open_new_tab(url)
-        return None
+        return self
 
     @ChepyDecorators.call_stack
     def http_request(
