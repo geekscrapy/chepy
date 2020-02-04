@@ -741,12 +741,8 @@ class ChepyCore(object):
             >>> c.load_file() # this will load the file content into the state
         """
         path = pathlib.Path(self.state).expanduser().absolute()
-        try:
-            with open(path, "r") as f:
-                self.states[self._current_index] = f.read()
-        except UnicodeDecodeError:
-            with open(path, "rb") as f:
-                self.states[self._current_index] = bytearray(f.read())
+        with open(path, "rb") as f:
+            self.states[self._current_index] = bytearray(f.read())
         return self
 
     def write_to_file(self, path: str, as_binary: bool = False) -> None:
